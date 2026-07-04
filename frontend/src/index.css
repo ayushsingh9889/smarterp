@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========== COLOR VARIABLES ========== */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --sidebar-bg: #4c728b;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-danger { background: #ef4444; color: white; }
+.btn-danger:hover { background: #dc2626; }
+.btn-outline { background: white; border: 1px solid var(--border); }
+.btn-outline:hover { background: #f8fafc; }
+
+/* Inputs */
+input, select, textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+}
+
+/* Tables */
+.table-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+}
+td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+tr:hover td { background: #f8fafc; }
+
+/* Badges */
+.badge { padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; }
+.badge-success { background: #dcfce7; color: #166534; }
+.badge-danger { background: #fee2e2; color: #991b1b; }
+.badge-warning { background: #fef3c7; color: #92400e; }
+
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: slideIn 0.2s ease; }
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========== PRINT ========== */
+@media print {
+  html, body { visibility: hidden; background: white !important; margin: 0 !important; padding: 0 !important; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 30px; }
+  .no-print { display: none !important; }
+  .print-only-header { display: block !important; text-align: center; margin-bottom: 20px; }
+  .print-company-name { font-size: 22px; font-weight: bold; margin: 0; }
+  .print-company-tagline { font-size: 13px; margin: 4px 0; color: #555; }
+  .print-company-info { font-size: 11px; margin: 2px 0; color: #777; }
+  .print-only-amount { display: block !important; text-align: right; font-size: 12px; }
+  .print-title { text-align: center; font-size: 18px; margin-bottom: 16px; color: #000 !important; }
+  .print-card { border: 1px solid #000 !important; box-shadow: none !important; margin-bottom: 20px !important; }
+  .print-header { background: #f5f5f5 !important; -webkit-print-color-adjust: exact !important; }
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+  .table-card { overflow-x: auto; }
+  table { font-size: 11px; }
+  th, td { padding: 8px; white-space: nowrap; }
+  .card { padding: 16px; }
+  .btn { padding: 10px 16px; font-size: 13px; width: 100%; justify-content: center; }
+  h1 { font-size: 18px; }
+  h2 { font-size: 16px; }
+  input, select, textarea { font-size: 16px; padding: 10px; }
+  .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: 1fr !important; }
+  .stat-card { padding: 14px; }
+  nav { padding: 8px 12px !important; }
+  nav input { width: 120px !important; }
+  footer { padding: 4px !important; font-size: 10px !important; }
+  footer > div { padding: 6px 8px !important; }
+}
