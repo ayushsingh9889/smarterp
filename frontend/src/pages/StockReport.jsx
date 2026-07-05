@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import API from '../axiosInstance'
 
 function StockReport() {
     const [items, setItems] = useState([])
@@ -9,12 +9,12 @@ function StockReport() {
         loadData()
     }, [])
 
-    const loadData = async () => {
-        const res = await axios.get('http://localhost:5000/api/items')
-        setItems(res.data)
-        const value = res.data.reduce((sum, item) => sum + (item.stock * item.price), 0)
-        setTotalValue(value)
-    }
+   const loadData = async () => {
+    const res = await API.get('/items')
+    setItems(res.data)
+    const value = res.data.reduce((sum, item) => sum + (item.stock * item.price), 0)
+    setTotalValue(value)
+}
 
     const totalStock = items.reduce((sum, i) => sum + i.stock, 0)
 
