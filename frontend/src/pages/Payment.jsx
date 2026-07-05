@@ -8,7 +8,7 @@ function Payment() {
     useEffect(() => { loadPayments() }, [])
 
     const loadPayments = async () => {
-        const res = await axios.get('http://localhost:5000/api/payments')
+        const res = await axios.get('https://smarterp-backend-d4zp.onrender.com/api')
         setPayments(res.data)
     }
 
